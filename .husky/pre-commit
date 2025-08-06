@@ -1,0 +1,4 @@
+pnpm prettier:check
+pnpm eslint:check
+pnpm cspell:check
+pnpm exec lint-staged

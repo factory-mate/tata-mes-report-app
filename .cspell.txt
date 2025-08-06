@@ -14,7 +14,6 @@ splashscreen
 stacktracey
 tailwindcss
 toutiao
-ttou
 unplugin
 nocheck
 nvue

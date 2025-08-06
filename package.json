@@ -71,6 +71,7 @@
     "@bit-ocean/commitlint-config": "^0.0.53",
     "@bit-ocean/cspell": "^0.0.53",
     "@bit-ocean/eslint-config": "^0.0.53",
+    "@bit-ocean/prettier-config": "^0.0.53",
     "@dcloudio/types": "^3.4.1",
     "@dcloudio/uni-automator": "3.0.0-3081220230817001",
     "@dcloudio/uni-cli-shared": "3.0.0-3081220230817001",

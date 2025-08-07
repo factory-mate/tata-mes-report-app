@@ -1,10 +1,10 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import uni from '@dcloudio/vite-plugin-uni'
+import Uni from '@dcloudio/vite-plugin-uni'
 import AutoImport from 'unplugin-auto-import/vite'
 import type { ProxyOptions } from 'vite'
 import { defineConfig, loadEnv } from 'vite'
-import VueDevTools from 'vite-plugin-vue-devtools'
+// import VueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
-      uni(),
+      Uni(),
       AutoImport({
         dts: true,
         include: [
@@ -46,8 +46,8 @@ export default defineConfig(({ mode }) => {
           }
         ],
         dirs: ['src/api', 'src/config', 'src/store', 'src/utils']
-      }),
-      VueDevTools()
+      })
+      // VueDevTools()
     ],
     resolve: {
       alias: {

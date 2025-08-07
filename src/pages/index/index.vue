@@ -56,17 +56,8 @@ onLoad((option) => {
     <view
       style="display: flex; width: fit-content; justify-content: center; gap: 4px; margin: auto"
     >
-      <u-button
-        text="确定"
-        type="primary"
-        @click="handleClick"
-      >
-      </u-button>
-      <u-button
-        text="取消"
-        type="primary"
-      >
-      </u-button>
+      <wd-button type="primary">确定</wd-button>
+      <wd-button type="primary">取消</wd-button>
     </view>
   </view>
 </template>

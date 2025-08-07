@@ -12,7 +12,6 @@
     "src/**/*.vue",
     "vite.config.ts",
     "shims-uni.d.ts",
-    "env.d.ts",
     "auto-imports.d.ts"
   ]
 }

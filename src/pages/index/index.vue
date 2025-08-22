@@ -1,115 +1,73 @@
 <script setup lang="ts">
-const title = ref('Hello')
-const user = ref<User | null>(null)
-
-function navTo(url: string) {
-  uni.navigateTo({
-    url
-  })
-}
-
-interface User {
-  name: string
-  age: number
-}
-
-interface Option {
-  data: string
-}
-
-onLoad((option) => {
-  const { data } = option as Option
-  try {
-    user.value = <User>JSON.parse(data)
-  } catch {
-    user.value = null
-  }
+const loginForm = ref({
+  username: '',
+  password: ''
 })
+
+const handleLogin = () => {
+  if (loginForm.value.username === '' || loginForm.value.password === '') {
+    uni.showToast({
+      title: '账号或密码不能为空',
+      icon: 'none'
+    })
+    return
+  }
+  uni.switchTab({ url: '/pages/home/index' })
+}
+
+onLoad(() => {})
 </script>
 
 <template>
-  <view>
-    <view class="content">
+  <view class="page">
+    <view>
       <image
         class="logo"
-        src="/static/logo.png"
+        src="/static/login_logo.png"
+        mode="widthFix"
       />
-      <view class="text-area">
-        <text class="title">{{ title }}</text>
-      </view>
     </view>
-
-    <view class="link-list">
-      <text @click="navTo('/pages/login/index')">/login</text>
-      <text @click="navTo('/pages/list/index')">/list</text>
-      <text @click="navTo('/pages/startup/index')">/startup</text>
-      <text @click="navTo('/pages/components/index')">/components</text>
+    <view class="form">
+      <wd-cell-group border>
+        <wd-input
+          v-model="loginForm.username"
+          label="账号"
+          clearable
+          label-width="15%"
+        />
+        <wd-input
+          v-model="loginForm.password"
+          label="密码"
+          clearable
+          show-password
+          label-width="15%"
+        />
+      </wd-cell-group>
     </view>
-
-    <template v-if="user">
-      <view class="user">
-        <text>{{ user.name }}</text>
-        <text>{{ user.age }}</text>
-      </view>
-    </template>
-
-    <view
-      style="display: flex; width: fit-content; justify-content: center; gap: 4px; margin: auto"
-    >
-      <wd-button type="primary">确定</wd-button>
-      <wd-button type="primary">取消</wd-button>
+    <view class="btn">
+      <wd-button @click="handleLogin">登录</wd-button>
     </view>
   </view>
 </template>
 
 <style scoped lang="scss">
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
-}
-
-.link-list {
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-  padding: 0px 8px 8px 8px;
-  border: 1px solid #8f8f94;
-  border-radius: 10px;
-  & > text {
-    color: #8f8f94;
-    text-align: center;
-    margin-top: 8px;
-    transition: all 0.3s ease-in-out;
+.page {
+  .logo {
+    width: 100%;
+    margin-top: 30%;
   }
-}
 
-.user {
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-  & > text {
-    margin-top: 4px;
+  .form {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+
+  .btn {
+    padding-top: 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
   }
 }
 </style>

@@ -1,6 +1,5 @@
 export interface Response {
-  code?: number | string
-  message?: string
+  success?: boolean
 }
 
 export interface BaseResponse<T = any> extends Response {

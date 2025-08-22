@@ -5,13 +5,19 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "FactoryMate"
       }
     },
     {
-      "path": "pages/login/index",
+      "path": "pages/home/index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "主页"
+      }
+    },
+    {
+      "path": "pages/my/index",
+      "style": {
+        "navigationBarTitleText": "我的"
       }
     },
     {
@@ -26,12 +32,6 @@
         }
       }
     },
-    {
-      "path": "pages/components/index",
-      "style": {
-        "navigationBarTitleText": "uni-app"
-      }
-    },
     // NOTE: 仅在微信小程序下使用启动页面
     {
       "path": "pages/startup/index",
@@ -40,6 +40,24 @@
       }
     }
   ],
+  "tabBar": {
+    "height": "60px",
+    "borderStyle": "#000000",
+    "backgroundColor": "#ffffff",
+    "color": "#8F8F94",
+    "selectedColor": "#f33e54",
+    "fontSize": "14px",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的"
+      }
+    ]
+  },
   "easycom": {
     "autoscan": true,
     "custom": {

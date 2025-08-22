@@ -8,19 +8,25 @@ import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
-  const { VITE_PORT, VITE_BASE_API_URL, VITE_MOCK_API_URL } = env as ImportMetaEnv
+  const { VITE_PORT, VITE_MANAGE_CENTER_API_URL, VITE_MES_API_URL, VITE_DEVICE_API_URL } =
+    env as ImportMetaEnv
 
   const port = parseInt(VITE_PORT, 10) || 3000
   const proxy: Record<string, string | ProxyOptions> = {
-    '/base-api': {
-      target: VITE_BASE_API_URL,
+    '/manage-center-api': {
+      target: VITE_MANAGE_CENTER_API_URL,
       changeOrigin: true,
-      rewrite: (path: string) => path.replace(/^\/base-api/, '')
+      rewrite: (path: string) => path.replace(/^\/manage-center-api/, '')
     },
-    '/mock-api': {
-      target: VITE_MOCK_API_URL,
+    '/mes-api': {
+      target: VITE_MES_API_URL,
       changeOrigin: true,
-      rewrite: (path: string) => path.replace(/^\/mock-api/, '')
+      rewrite: (path: string) => path.replace(/^\/mes-api/, '')
+    },
+    '/device-api': {
+      target: VITE_DEVICE_API_URL,
+      changeOrigin: true,
+      rewrite: (path: string) => path.replace(/^\/device-api/, '')
     }
   }
 

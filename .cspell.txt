@@ -12,9 +12,9 @@ preinstall
 quickapp
 splashscreen
 stacktracey
-tailwindcss
 toutiao
 unplugin
 nocheck
 nvue
 weixin
+VITE

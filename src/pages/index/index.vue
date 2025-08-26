@@ -4,7 +4,7 @@ const loginForm = ref({
   password: ''
 })
 
-const handleLogin = () => {
+const handleLogin = async () => {
   if (loginForm.value.username === '' || loginForm.value.password === '') {
     uni.showToast({
       title: '账号或密码不能为空',
@@ -12,7 +12,17 @@ const handleLogin = () => {
     })
     return
   }
-  uni.switchTab({ url: '/pages/home/index' })
+  try {
+    const { data } = await AuthAPI.login({
+      cLoginName: loginForm.value.username,
+      cPassWord: loginForm.value.password
+    })
+    uni.setStorageSync('token', data.token)
+    uni.setStorageSync('user', data.token_user)
+    uni.switchTab({ url: '/pages/home/index' })
+  } catch {
+    //
+  }
 }
 
 onLoad(() => {})

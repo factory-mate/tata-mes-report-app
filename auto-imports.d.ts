@@ -6,6 +6,7 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const AuthAPI: typeof import('./src/api/auth/index')['AuthAPI']
   const BasePageModel: typeof import('@/constants')['BasePageModel']
   const EffectScope: typeof import('vue')['EffectScope']
   const GlobalEnvConfig: typeof import('@/constants')['GlobalEnvConfig']
@@ -76,6 +77,7 @@ declare global {
   const reactive: typeof import('vue')['reactive']
   const readonly: typeof import('vue')['readonly']
   const ref: typeof import('vue')['ref']
+  const request: typeof import('./src/api/request')['request']
   const resolveComponent: typeof import('vue')['resolveComponent']
   const setActivePinia: typeof import('pinia')['setActivePinia']
   const setMapStoreSuffix: typeof import('pinia')['setMapStoreSuffix']
@@ -107,4 +109,7 @@ declare global {
   // @ts-ignore
   export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { R } from './src/api/request'
+  import('./src/api/request')
 }

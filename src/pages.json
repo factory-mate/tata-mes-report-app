@@ -21,15 +21,81 @@
       }
     },
     {
-      "path": "pages/list/index",
+      "path": "pages/statistics/attendance/index",
       "style": {
-        "navigationBarTitleText": "uni-app",
-        "enablePullDownRefresh": true,
-        "h5": {
-          "pullToRefresh": {
-            "color": "#0078d7"
-          }
-        }
+        "navigationBarTitleText": "人员出勤"
+      }
+    },
+    {
+      "path": "pages/statistics/device-failure/index",
+      "style": {
+        "navigationBarTitleText": "设备故障统计"
+      }
+    },
+    {
+      "path": "pages/statistics/energy-comsumption/index",
+      "style": {
+        "navigationBarTitleText": "能耗"
+      }
+    },
+    {
+      "path": "pages/statistics/workshop-device/index",
+      "style": {
+        "navigationBarTitleText": "车间设备巡检保养统计"
+      }
+    },
+    {
+      "path": "pages/statistics/main-order/index",
+      "style": {
+        "navigationBarTitleText": "重点订单"
+      }
+    },
+    {
+      "path": "pages/statistics/internal-return/index",
+      "style": {
+        "navigationBarTitleText": "内返统计"
+      }
+    },
+    {
+      "path": "pages/statistics/door-package/index",
+      "style": {
+        "navigationBarTitleText": "门扇包装任务"
+      }
+    },
+    {
+      "path": "pages/statistics/production-task/index",
+      "style": {
+        "navigationBarTitleText": "生产任务统计"
+      }
+    },
+    {
+      "path": "pages/statistics/stock-rest/index",
+      "style": {
+        "navigationBarTitleText": "成品库存分类结存数量统计"
+      }
+    },
+    {
+      "path": "pages/statistics/outer-late/index",
+      "style": {
+        "navigationBarTitleText": "外部晚期"
+      }
+    },
+    {
+      "path": "pages/statistics/batch/index",
+      "style": {
+        "navigationBarTitleText": "当日排产批次查询"
+      }
+    },
+    {
+      "path": "pages/statistics/plan-order/index",
+      "style": {
+        "navigationBarTitleText": "计划部下单统计"
+      }
+    },
+    {
+      "path": "pages/statistics/outer-repair/index",
+      "style": {
+        "navigationBarTitleText": "外部返修统计"
       }
     },
     // NOTE: 仅在微信小程序下使用启动页面

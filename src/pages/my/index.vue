@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { TokenUser } from '@/api/auth/types'
+import { GlobalEnvConfig } from '@/constants'
 
 const userInfo = ref<TokenUser | null>(null)
 
@@ -22,6 +23,7 @@ onShow(() => {
     <view style="margin-top: 12px">
       <wd-button @click="logout">注销</wd-button>
     </view>
+    <text style="font-size: 10px; margin-top: 8px"> 版本：{{ GlobalEnvConfig.MODE }} </text>
   </view>
 </template>
 

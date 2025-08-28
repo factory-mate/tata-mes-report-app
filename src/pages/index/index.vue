@@ -26,6 +26,12 @@ const handleLogin = async () => {
 }
 
 onLoad(() => {})
+onShow(() => {
+  const token = uni.getStorageSync('token')
+  if (token) {
+    uni.switchTab({ url: '/pages/home/index' })
+  }
+})
 </script>
 
 <template>

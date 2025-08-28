@@ -8,15 +8,32 @@ interface SuccessRes extends UniApp.RequestSuccessCallbackResult {
   data: R<any>
 }
 
-export interface R<T> {
-  success?: boolean
+export interface R<T = any> {
   data: T
+  success?: boolean
   status?: number
   errmsg?: any
   msg?: any
 }
 
-export function request<T = any>(options: RequestOptions): Promise<R<T>> {
+export interface Page<T = any> extends R<PageVo<T>> {}
+
+interface PageVo<T> {
+  data: T[]
+  dataCount: number
+  pageCount: number
+  pageIndex: number
+  pageSize: number
+}
+
+export interface PageDto {
+  pageIndex: number
+  pageSize: number
+  orderByFileds?: string
+  conditions?: string
+}
+
+export function request<T = any>(options: RequestOptions): Promise<T> {
   return new Promise((resolve, reject) => {
     uni.request({
       url: options.url,
@@ -50,7 +67,7 @@ export function request<T = any>(options: RequestOptions): Promise<R<T>> {
           })
           reject(data)
         }
-        resolve(data)
+        resolve(data as T)
       },
       fail: (error) => {
         uni.hideLoading()

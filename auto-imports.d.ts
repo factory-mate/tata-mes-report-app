@@ -10,6 +10,7 @@ declare global {
   const BasePageModel: typeof import('@/constants')['BasePageModel']
   const EffectScope: typeof import('vue')['EffectScope']
   const GlobalEnvConfig: typeof import('@/constants')['GlobalEnvConfig']
+  const StatisticsAPI: typeof import('./src/api/statistics/index')['StatisticsAPI']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
@@ -110,6 +111,6 @@ declare global {
   export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
   // @ts-ignore
-  export type { R } from './src/api/request'
+  export type { R, Page, PageDto } from './src/api/request'
   import('./src/api/request')
 }

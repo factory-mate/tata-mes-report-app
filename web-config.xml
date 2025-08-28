@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <system.webServer>
+    <directoryBrowse enabled="false" />
+    <rewrite>
+      <rules>
+        <rule name="ManageCenterAPIReverseProxy" stopProcessing="true">
+          <match url="^manage-center-api/(.*)" />
+          <conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+          <action type="Rewrite" url="http://171.13.38.94:8888/{R:1}" logRewrittenUrl="false" />
+        </rule>
+        <rule name="MESAPIReverseProxy" enabled="true" stopProcessing="true">
+          <match url="^mes-api/(.*)" />
+          <conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+          <action type="Rewrite" url="http://171.13.38.94:10100/{R:1}" />
+        </rule>
+        <rule name="DeviceAPIReverseProxy" enabled="true" stopProcessing="true">
+          <match url="^device-api/(.*)" />
+          <conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+          <action type="Rewrite" url="http://171.13.38.94:10700/{R:1}" />
+        </rule>
+        <rule name="SPA" enabled="true" stopProcessing="true">
+          <match url=".*" />
+          <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
+            <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+            <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+          </conditions>
+          <action type="Rewrite" url="/" />
+        </rule>
+      </rules>
+    </rewrite>
+  </system.webServer>
+</configuration>

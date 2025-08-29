@@ -7,7 +7,7 @@ export const AuthAPI = {
       method: 'POST',
       data: {
         ...data,
-        cSourceAppType: '002'
+        cSourceAppType: '004'
       } as LoginDto
     })
 }

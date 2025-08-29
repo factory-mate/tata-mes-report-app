@@ -27,3 +27,8 @@ Get_Mobile_CJBZ_WGTJ
 Get_Mobile_WQDS
 R_WFTJ
 cLinecFactoryUnitName
+XBTJ
+CPKC
+WBWQ
+XDTJ
+WBFXTJ

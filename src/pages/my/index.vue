@@ -9,6 +9,8 @@ const logout = () => {
     title: '退出成功',
     icon: 'success'
   })
+  uni.removeStorageSync('token')
+  uni.removeStorageSync('user')
   uni.redirectTo({ url: '/pages/index/index' })
 }
 

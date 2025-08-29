@@ -9,5 +9,10 @@ export const AuthAPI = {
         ...data,
         cSourceAppType: '004'
       } as LoginDto
+    }),
+  menu: () =>
+    request<R>({
+      url: `${GlobalEnvConfig.MANAGE_CENTER_API_PREFIX}/api/AuthHelper/GetMenuAuth`,
+      method: 'GET'
     })
 }

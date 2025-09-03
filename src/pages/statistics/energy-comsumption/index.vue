@@ -42,5 +42,10 @@ onShow(() => {
       label="当日单产品平均能耗"
       width="40%"
     />
+    <wd-table-col
+      prop="dDateStr"
+      label="日期"
+      width="40%"
+    />
   </wd-table>
 </template>

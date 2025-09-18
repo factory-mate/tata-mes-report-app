@@ -27,6 +27,12 @@
       }
     },
     {
+      "path": "pages/statistics/attendance/add",
+      "style": {
+        "navigationBarTitleText": "人员出勤新增"
+      }
+    },
+    {
       "path": "pages/statistics/device-failure/index",
       "style": {
         "navigationBarTitleText": "设备故障统计"

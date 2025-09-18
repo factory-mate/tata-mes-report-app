@@ -1,9 +1,31 @@
 export const StatisticsAPI = {
+  // 人员出勤
   getAttendance: (data: PageDto) =>
     request<Page>({
       url: `${GlobalEnvConfig.MANAGE_CENTER_API_PREFIX}/api/attendance/GetForPage`,
       method: 'POST',
       data
+    }),
+  getLineTree: () =>
+    request<any>({
+      url: `${GlobalEnvConfig.MANAGE_CENTER_API_PREFIX}/api/MES_Factorymodel/GetForTreeOnLimit`,
+      method: 'GET',
+      data: {
+        EndType: 'Line',
+        cDictonaryTypeCode: 'cFactoryUnitName'
+      }
+    }),
+  addAttendance: (data: PageDto) =>
+    request<any>({
+      url: `${GlobalEnvConfig.MANAGE_CENTER_API_PREFIX}/api/attendance/add`,
+      method: 'POST',
+      data
+    }),
+  delAttendance: (ids: string[]) =>
+    request<any>({
+      url: `${GlobalEnvConfig.MANAGE_CENTER_API_PREFIX}/api/attendance/del`,
+      method: 'DELETE',
+      data: ids
     }),
   getDeviceFailure: (data: PageDto) =>
     request<Page>({

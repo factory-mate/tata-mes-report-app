@@ -32,3 +32,4 @@ CPKC
 WBWQ
 XDTJ
 WBFXTJ
+cDictonaryTypeCode

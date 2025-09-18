@@ -11,6 +11,7 @@ const logout = () => {
   })
   uni.removeStorageSync('token')
   uni.removeStorageSync('user')
+  uni.removeStorageSync('auth')
   uni.redirectTo({ url: '/pages/index/index' })
 }
 

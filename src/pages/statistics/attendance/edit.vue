@@ -4,6 +4,7 @@ import { useToast } from 'wot-design-uni'
 
 const toast = useToast()
 
+const config = ref<any>({})
 const model = reactive<any>({ pickerData: [] })
 const form = ref()
 const columns = ref<any[][]>([])
@@ -20,7 +21,7 @@ function handleSubmit() {
     .validate()
     .then(({ valid }: any) => {
       if (valid) {
-        StatisticsAPI.addAttendance({
+        StatisticsAPI.editAttendance({
           ...model,
           dDate: dayjs(model.dDate).format('YYYY-MM-DD')
         }).then(() => {
@@ -63,7 +64,14 @@ const columnChange = ({ selectedItem, resolve, finish }: any) => {
 const displayFormat = (selectedItems: Record<string, any>[]) =>
   selectedItems.at(-1)?.cFactoryUnitName ?? ''
 
+onLoad((options) => {
+  config.value = options
+})
 onShow(() => {
+  StatisticsAPI.getAttendanceDetail(config.value.UID).then((res) => {
+    Object.assign(model, res.data)
+    model.dDate = dayjs(model.dDate).toDate()
+  })
   StatisticsAPI.getLineTree().then((res) => {
     columns.value = [res.data]
     lineTree.value = res.data

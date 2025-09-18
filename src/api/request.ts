@@ -55,15 +55,25 @@ export function request<T = any>(options: RequestOptions): Promise<T> {
           default:
             break
         }
+        let errorMsg = ''
+        if (data.msg) {
+          errorMsg = data.msg
+        } else if (data.errmsg?.[0]?.Value) {
+          try {
+            const errormsgParsedJSON = JSON.parse(data.errmsg[0].Value)
+            // eslint-disable-next-line no-unsafe-optional-chaining
+            errorMsg = errormsgParsedJSON?.[0]?.name + errormsgParsedJSON?.[0]?.msg
+          } catch {
+            errorMsg = data.errmsg[0].Value
+          }
+          if (!errorMsg) {
+            errorMsg = data.errmsg[0].Value
+          }
+        }
         if (!data.success || data.status !== 200) {
           uni.showToast({
             icon: 'none',
-            title:
-              data.msg ||
-              data.errmsg?.[0]?.msg ||
-              data.errmsg?.[0]?.Value ||
-              data.errmsg ||
-              '失败！'
+            title: errorMsg || '失败！'
           })
           reject(data)
         }
@@ -109,6 +119,7 @@ function handleForbidden() {
   }, 1500)
   uni.removeStorageSync('token')
   uni.removeStorageSync('user')
+  uni.removeStorageSync('auth')
   uni.navigateTo({
     url: '/pages/home/index'
   })

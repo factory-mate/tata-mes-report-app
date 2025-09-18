@@ -33,6 +33,12 @@
       }
     },
     {
+      "path": "pages/statistics/attendance/edit",
+      "style": {
+        "navigationBarTitleText": "人员出勤编辑"
+      }
+    },
+    {
       "path": "pages/statistics/device-failure/index",
       "style": {
         "navigationBarTitleText": "设备故障统计"
@@ -72,6 +78,24 @@
       "path": "pages/statistics/production-task/index",
       "style": {
         "navigationBarTitleText": "生产任务统计"
+      }
+    },
+    {
+      "path": "pages/statistics/plan-qty/index",
+      "style": {
+        "navigationBarTitleText": "产能数据"
+      }
+    },
+    {
+      "path": "pages/statistics/plan-qty/add",
+      "style": {
+        "navigationBarTitleText": "产能数据新增"
+      }
+    },
+    {
+      "path": "pages/statistics/plan-qty/edit",
+      "style": {
+        "navigationBarTitleText": "产能数据编辑"
       }
     },
     {

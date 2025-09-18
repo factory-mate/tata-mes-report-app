@@ -15,11 +15,25 @@ export const StatisticsAPI = {
         cDictonaryTypeCode: 'cFactoryUnitName'
       }
     }),
-  addAttendance: (data: PageDto) =>
+  addAttendance: (data: any) =>
     request<any>({
       url: `${GlobalEnvConfig.MANAGE_CENTER_API_PREFIX}/api/attendance/add`,
       method: 'POST',
       data
+    }),
+  editAttendance: (data: any) =>
+    request<any>({
+      url: `${GlobalEnvConfig.MANAGE_CENTER_API_PREFIX}/api/attendance/edit`,
+      method: 'POST',
+      data
+    }),
+  getAttendanceDetail: (val: string) =>
+    request<any>({
+      url: `${GlobalEnvConfig.MANAGE_CENTER_API_PREFIX}/api/attendance/GetById`,
+      method: 'GET',
+      data: {
+        val
+      }
     }),
   delAttendance: (ids: string[]) =>
     request<any>({
@@ -27,6 +41,7 @@ export const StatisticsAPI = {
       method: 'DELETE',
       data: ids
     }),
+
   getDeviceFailure: (data: PageDto) =>
     request<Page>({
       url: `${GlobalEnvConfig.DEVICE_API_PREFIX}/api/R_DEVICE_STATUS/GetForPage_TJ`,
@@ -63,12 +78,47 @@ export const StatisticsAPI = {
       method: 'POST',
       data
     }),
+  // 生产任务统计
   getProductionTask: (data: PageDto) =>
     request<Page>({
       url: `${GlobalEnvConfig.MES_API_PREFIX}/api/SDWGTJ/Get_Mobile_Task_WGTJ`,
       method: 'POST',
       data
     }),
+  // 产能数据维护
+  getPlanQty: (data: PageDto) =>
+    request<Page>({
+      url: `${GlobalEnvConfig.MES_API_PREFIX}/api/PLANQTY_DAY/GetForPage`,
+      method: 'POST',
+      data
+    }),
+  addPlanQty: (data: any) =>
+    request<any>({
+      url: `${GlobalEnvConfig.MES_API_PREFIX}/api/PLANQTY_DAY/add`,
+      method: 'POST',
+      data
+    }),
+  editPlanQty: (data: any) =>
+    request<any>({
+      url: `${GlobalEnvConfig.MES_API_PREFIX}/api/PLANQTY_DAY/edit`,
+      method: 'POST',
+      data
+    }),
+  getPlanQtyDetail: (val: string) =>
+    request<any>({
+      url: `${GlobalEnvConfig.MES_API_PREFIX}/api/PLANQTY_DAY/GetById`,
+      method: 'GET',
+      data: {
+        val
+      }
+    }),
+  delPlanQtyTask: (ids: string[]) =>
+    request<any>({
+      url: `${GlobalEnvConfig.MES_API_PREFIX}/api/PLANQTY_DAY/Del`,
+      method: 'DELETE',
+      data: ids
+    }),
+
   getStockRest: (data: PageDto) =>
     request<R<any[]>>({
       url: `${GlobalEnvConfig.MES_API_PREFIX}/api/SDWGTJ/Get_Mobile_CJBZ_WGTJ`,

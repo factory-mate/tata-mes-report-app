@@ -43,6 +43,11 @@ const listData = [
     code: 'BI.TaskTJ'
   },
   {
+    title: '产能数据',
+    url: '/pages/statistics/plan-qty/index',
+    code: 'BI.PLANQTY_DAY.List'
+  },
+  {
     title: '成品库存分类结存数量统计',
     url: '/pages/statistics/stock-rest/index',
     code: 'BI.CPKC'
@@ -74,13 +79,17 @@ function handleNav(url: string) {
 }
 
 onShow(() => {
-  AuthAPI.menu().then((res) => {
-    if (res.success) {
-      res.data?.[0]?.Child.forEach((i: any) => {
-        codes.value.push(i.cAuthCode)
-      })
-    }
-  })
+  AuthAPI.menu()
+    .then((res) => {
+      if (res.success) {
+        res.data?.[0]?.Child.forEach((i: any) => {
+          codes.value.push(i.cAuthCode)
+        })
+      }
+    })
+    .finally(() => {
+      uni.setStorageSync('auth', codes.value)
+    })
 })
 </script>
 
@@ -91,7 +100,7 @@ onShow(() => {
       :key="index"
     >
       <wd-card
-        v-if="codes.includes(item.code)"
+        v-if="!item.code || codes.includes(item.code)"
         @click="handleNav(item.url)"
       >
         <view class="card-content">{{ item.title }}</view>

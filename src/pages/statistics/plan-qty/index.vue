@@ -4,7 +4,7 @@ const listData = ref<any[]>([])
 
 async function fetchData() {
   try {
-    const data = await StatisticsAPI.getAttendance({
+    const data = await StatisticsAPI.getPlanQty({
       pageIndex: 1,
       pageSize: 20,
       conditions: '',
@@ -18,13 +18,13 @@ async function fetchData() {
 
 function handleAdd() {
   uni.navigateTo({
-    url: '/pages/statistics/attendance/add'
+    url: '/pages/statistics/plan-qty/add'
   })
 }
 
 function handleEdit(row: any) {
   uni.navigateTo({
-    url: `/pages/statistics/attendance/edit?UID=${row.UID}`
+    url: `/pages/statistics/plan-qty/edit?UID=${row.UID}`
   })
 }
 
@@ -36,7 +36,7 @@ function handleDelete(row: any) {
     cancelText: '取消',
     success: (res) => {
       if (res.confirm) {
-        StatisticsAPI.delAttendance([row.UID])
+        StatisticsAPI.delPlanQtyTask([row.UID])
           .then(() => {
             uni.showToast({
               title: '删除成功',
@@ -59,7 +59,7 @@ onShow(() => {
 
 <template>
   <wd-button
-    v-if="codes.includes('BI.ATTENDANCE.Add')"
+    v-if="codes.includes('BI.PLANQTY_DAY.Add')"
     style="float: right; margin: 4px"
     @click="handleAdd"
   >
@@ -67,26 +67,23 @@ onShow(() => {
   </wd-button>
   <wd-table :data="listData">
     <wd-table-col
-      prop="cCJName"
-      label="车间"
-      width="30%"
-    />
-    <wd-table-col
       prop="cFactoryUnitName"
       label="产线"
-      width="38%"
+      width="40%"
     />
     <wd-table-col
-      prop="iActualQuantity"
-      label="出勤数/定岗数"
-      width="32%"
-    >
-      <template #value="{ row }">
-        <text>{{ row.iActualQuantity }}/{{ row.iStandtardQuantity }}</text>
-      </template>
-    </wd-table-col>
+      prop="iQuantity"
+      label="计划产量"
+      width="40%"
+    />
+
     <wd-table-col
-      v-if="codes.includes('BI.ATTENDANCE.Add')"
+      prop="dDateStr"
+      label="日期"
+      width="40%"
+    />
+    <wd-table-col
+      v-if="codes.includes('BI.PLANQTY_DAY.Add')"
       prop="operate"
       label="操作"
       width="30%"
